@@ -21,3 +21,11 @@ background: url(${logoPic});
 background-size: contain;
 
 `
+
+export const Nav = styled.div`
+width: 960px;
+height: 100%;
+margin: 0 auto;
+background-color: green;
+
+`;
