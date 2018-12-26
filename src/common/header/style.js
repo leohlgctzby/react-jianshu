@@ -18,7 +18,7 @@ width: 100px;
 height: 56px;
 background: url(${logoPic});
 background-size: contain;
-`
+`;
 
 export const Nav = styled.div`
 width: 960px;

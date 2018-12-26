@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { HeaderWrapper, 
+import { 
+  HeaderWrapper, 
   Logo, 
   Nav, 
   NavItem, 
@@ -14,7 +15,7 @@ class Header extends Component {
       <HeaderWrapper>
         <Logo/>
         <Nav>
-          <NavItem className='left active'>首页</NavItem>
+          <NavItem className='left  active'>首页</NavItem>
           <NavItem className='left'>下载APP</NavItem>
           <NavItem className='right'>登录</NavItem>
           <NavItem className='right'>Aa</NavItem>
