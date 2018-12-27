@@ -48,6 +48,19 @@ color: #333;
 export const SearchWrapper = styled.div`
   position: relative;
   float: left;
+  .slide-enter {
+    width: 160px;
+    transition: all .2s ease-out;
+  }
+  .slide-enter-active {
+    width: 240px;
+  }
+  .slide-exit {
+    transition: all .2s ease-out;
+  }
+  .slide-exit-active {
+    width: 160px;
+  }
   .iconfont {
     position: absolute;
     right: 5px;
@@ -105,7 +118,7 @@ font-size: 14px;
 &.reg {
   color: #ec6149;
 }
-&.writting {
+&.writing {
   color: #fff;
   background: #ec6149;
 }
