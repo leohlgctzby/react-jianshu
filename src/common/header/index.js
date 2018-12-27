@@ -6,7 +6,8 @@ import {
   NavItem, 
   NavSearch, 
   Addition,
-  Button
+  Button,
+  SearchWrapper
 } from './style'
 
 class Header extends Component {
@@ -21,8 +22,11 @@ class Header extends Component {
           <NavItem className='right'>
           <i className='iconfont'>&#xe636;</i>
           </NavItem>
-          <NavSearch></NavSearch>
-        </Nav>
+          <SearchWrapper>
+            <NavSearch></NavSearch>
+            <i className='iconfont'>&#xe62b;</i>
+          </SearchWrapper>
+          </Nav>
         <Addition>
           <Button className='writting'>
           <i className='iconfont'>&#xe615;</i>
