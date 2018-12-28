@@ -60,7 +60,7 @@ const Header = props => {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    focused: state.focused
+    focused: state.header.focused
   };
 };
 
@@ -71,7 +71,13 @@ const mapDispatchToProps = dispatch => {
         type: "search_focus"
       };
       dispatch(action);
-    }
+    },
+    handleInputBlur() {
+      const action = {
+        type: "search_blur"
+      };
+      dispatch(action);
+    },
   };
 };
 
