@@ -18,24 +18,22 @@
 //   console.log(state)
 //   return state;
 // }
+import * as constants from './constants';
+
 const defaultState = {
   focused: false
 };
 
 export default (state = defaultState, action) => {
-  if (action.type === "search_focus") {
-    const newState = {
+  if (action.type === constants.SEARCH_FOCUS) {
+    return {
       focused: true
     };
-    console.log(newState);
-    return newState;
   }
-  if (action.type === "search_blur") {
-    const newState = {
+  if (action.type === constants.SEARCH_BLUR) {
+    return {
       focused: false
     };
-    console.log(newState);
-    return newState;
   }
   return state;
 };
