@@ -4,16 +4,17 @@ import axios from 'axios';
 
 const changeList = (data) => ({
   type: constants.CHANGE_LIST,
-  data: fromJS(data)
-})
+  data: fromJS(data),
+  totalPage: Math.ceil(data.length / 10)
+});
 
 export const searchFocus = () => ({
   type: constants.SEARCH_FOCUS
-})
+});
 
 export const searchBlur = () => ({
   type: constants.SEARCH_BLUR
-})
+});
 
 // 组件中异步获取数据的逻辑都拆分到了actionCreators里
 // 要求actionCreators返回的对象不是普通的js对象了，而是一个函数
