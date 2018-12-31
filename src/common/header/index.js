@@ -21,7 +21,7 @@ import {
 class Header extends Component {
 
   getListArea() {
-    const { focused, list, page } = this.props;
+    const { focused, list, page, handleMouseEnter, handleMouseLeave, mouseIn } = this.props;
     const newList = list.toJS();
     const pageList = [];
 
@@ -31,9 +31,12 @@ class Header extends Component {
       )
     }
 
-    if (focused) {
+    if (focused||mouseIn) {
       return (
-        <SearchInfo>
+        <SearchInfo 
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        >
           <SearchInfoTitle>
             热门搜索
             <SearchInfoSwitch>换一批</SearchInfoSwitch>
@@ -90,7 +93,8 @@ const mapStateToProps = state => {
   return {
     focused: state.getIn(["header", "focused"]),
     list: state.getIn(["header", "list"]),
-    page: state.getIn(["header", "page"])
+    page: state.getIn(["header", "page"]),
+    mouseIn: state.getIn(["header", "mouseIn"]),
   };
 };
 
@@ -102,7 +106,13 @@ const mapDispatchToProps = dispatch => {
     },
     handleInputBlur() {
       dispatch(actionCreators.searchBlur());
-    }
+    },
+    handleMouseEnter() {
+      dispatch(actionCreators.mouseEnter());
+    },
+    handleMouseLeave() {
+      dispatch(actionCreators.mouseLeave());
+    },
   };
 };
 
