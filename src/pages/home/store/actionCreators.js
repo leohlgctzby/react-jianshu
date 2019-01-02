@@ -32,3 +32,8 @@ export const getMoreList = (page) => {
     }).catch((err) => { console.log(err) });
   }
 }
+
+export const toggleTopShow = (show) => ({
+  type: constants.TOGGLE_SCROLL_TOP,
+  show
+})
