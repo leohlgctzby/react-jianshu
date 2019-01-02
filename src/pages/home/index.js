@@ -5,6 +5,7 @@ import List from './components/List';
 import Recommend from './components/Recommend';
 import Writer from './components/Writer';
 import { actionCreators } from './store';
+import { BackTop } from './style';
 
 import { 
   HomeWrapper,
@@ -13,6 +14,11 @@ import {
 } from './style';
  
 class Home extends Component {
+
+  handleScrollTop() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <HomeWrapper>
@@ -25,6 +31,7 @@ class Home extends Component {
           <Recommend/>
           <Writer/>
         </HomeRight>
+        <BackTop onClick={this.handleScrollTop}>顶部</BackTop>
       </HomeWrapper>
     )
   }
