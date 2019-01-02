@@ -16,6 +16,8 @@ export default (state = defaultState, action) => {
         recommendList: fromJS(action.recommendList)
       });
       // console.log(action);
+    case constants.ADD_HOME_LIST:
+      return state.set('articleList', state.get('articleList').concat(action.list))
     default :
       return state;
   }

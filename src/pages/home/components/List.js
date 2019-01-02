@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import { ListItem, ListInfo } from "../style";
+import { ListItem, ListInfo, LoadMore } from "../style";
 import { connect } from "react-redux";
+import { actionCreators } from '../store';
 
 class List extends Component {
   render() {
-    const { articleList } = this.props;
+    const { articleList, getMoreList } = this.props;
     return (
       <div>
-        {articleList.map(item => (
-          <ListItem key={item.get("id")}>
+        {articleList.map((item,index) => (
+          <ListItem key={index}>
             <img className="pic" src={item.get("imgUrl")} alt="" />
             <ListInfo>
               <h3 className="title">{item.get("title")}</h3>
@@ -16,6 +17,7 @@ class List extends Component {
             </ListInfo>
           </ListItem>
         ))}
+        <LoadMore onClick={getMoreList}>更多文字</LoadMore>
       </div>
     );
   }
@@ -26,7 +28,13 @@ const mapState = state => ({
   articleList: state.getIn(["home", "articleList"])
 });
 
+const mapDispatch = (dispatch) => ({
+  getMoreList() {
+    dispatch(actionCreators.getMoreList())
+  }
+})
+
 export default connect(
   mapState,
-  null
+  mapDispatch
 )(List);
