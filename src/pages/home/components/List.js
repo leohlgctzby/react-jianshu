@@ -5,7 +5,7 @@ import { actionCreators } from '../store';
 
 class List extends Component {
   render() {
-    const { articleList, getMoreList } = this.props;
+    const { articleList, getMoreList, page } = this.props;
     return (
       <div>
         {articleList.map((item,index) => (
@@ -17,7 +17,7 @@ class List extends Component {
             </ListInfo>
           </ListItem>
         ))}
-        <LoadMore onClick={getMoreList}>更多文字</LoadMore>
+        <LoadMore onClick={() => getMoreList(page)}>更多文字</LoadMore>
       </div>
     );
   }
@@ -25,12 +25,13 @@ class List extends Component {
 
 const mapState = state => ({
   // articleList: state.get('home').get('articleList')
-  articleList: state.getIn(["home", "articleList"])
+  articleList: state.getIn(["home", "articleList"]),
+  page: state.getIn(['home','articlePage'])
 });
 
 const mapDispatch = (dispatch) => ({
-  getMoreList() {
-    dispatch(actionCreators.getMoreList())
+  getMoreList(page) {
+    dispatch(actionCreators.getMoreList(page))
   }
 })
 
