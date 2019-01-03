@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { CSSTransition } from "react-transition-group";
 import { connect } from "react-redux";
 import { actionCreators } from "./store";
+import { actionCreators as loginActionCreators } from '../../pages/login/store';
 import { Link } from "react-router-dom";
 import {
   HeaderWrapper,
@@ -75,7 +76,7 @@ class Header extends Component {
   }
 
   render() {
-    const { focused, handleInputFocus, handleInputBlur, list, login } = this.props;
+    const { focused, handleInputFocus, handleInputBlur, list, login, logout } = this.props;
     return (
       <HeaderWrapper>
         <Link to="/">
@@ -85,7 +86,7 @@ class Header extends Component {
           <NavItem className="left  active">首页</NavItem>
           <NavItem className="left">下载APP</NavItem>
           {
-            login ? <NavItem className="right">退出</NavItem> :
+            login ? <NavItem onClick={logout} className="right" >退出</NavItem> :
             <Link to='/login'><NavItem className="right">登录</NavItem></Link>
           }
           <NavItem className="right">
@@ -157,6 +158,9 @@ const mapDispatchToProps = dispatch => {
       } else {
         dispatch(actionCreators.changePage(1));
       }
+    },
+    logout() {
+      dispatch(loginActionCreators.logout());
     }
   };
 };
